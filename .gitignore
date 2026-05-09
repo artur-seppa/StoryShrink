@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env
+output/
+*.mp3
+*.wav
+bin/
+models/
+input.txt

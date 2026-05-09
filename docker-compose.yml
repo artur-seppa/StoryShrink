@@ -1,0 +1,23 @@
+services:
+  ollama:
+    image: ollama/ollama
+    container_name: storyshrink-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+
+  piper:
+    build:
+      context: docker/piper
+      args:
+        PIPER_VOICE: pt_BR-faber-medium
+        PIPER_LANG: pt/pt_BR/faber/medium
+    container_name: storyshrink-piper
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+
+volumes:
+  ollama_data:
